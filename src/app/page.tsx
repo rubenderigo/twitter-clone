@@ -3,10 +3,11 @@ import { cookies } from 'next/headers'
 import { AuthButtonServer } from './components/auth-button-server'
 import { redirect } from 'next/navigation'
 import { PostsLists } from './components/posts-list'
-import { type Posts } from './types'
+import { type Database, type Posts } from './types'
+import { ComposePost } from './components/compose-post'
 
 export default async function Home() {
-  const supabase = createServerComponentClient({ cookies })
+  const supabase = createServerComponentClient<Database>({ cookies })
 
   const {
     data: { session }
@@ -21,11 +22,12 @@ export default async function Home() {
     .select('*, user:users(*)')
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between">
-      <section className="max-w-[800px] mx-auto border-l border-r border-white/20 min-h-screen">
-        <AuthButtonServer />
+    <main className="flex min-h-screen justify-between">
+      <section className="max-w-[600px] w-full mx-auto border-l border-r border-white/20 min-h-screen">
+        <ComposePost userAvatarUrl={session.user?.user_metadata?.avatar_url} />
         <PostsLists posts={posts as Posts} />
       </section>
+      <AuthButtonServer />
     </main>
   )
 }

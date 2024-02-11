@@ -24,7 +24,7 @@ export default function PostCard({
   content
 }: PostCardProps) {
   return (
-    <Card className="shadow-none bg-transparent hover:bg-slate-800 rounded-none cursor-pointer transition border-b border-white/20">
+    <Card className="shadow-none bg-transparent hover:bg-slate-900 rounded-none cursor-pointer transition border-b border-white/20">
       <CardHeader className="justify-between">
         <div className="flex gap-x-2">
           <Link href={`/${userName}`}>
