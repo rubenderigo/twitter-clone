@@ -28,7 +28,9 @@ export default async function Home() {
         <ComposePost userAvatarUrl={session.user?.user_metadata?.avatar_url} />
         <PostsLists posts={posts as Posts} />
       </section>
-      <AuthButtonServer />
+      <section className="mt-2">
+        <AuthButtonServer />
+      </section>
     </main>
   )
 }
