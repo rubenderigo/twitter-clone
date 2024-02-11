@@ -1,18 +1,5 @@
+import { type Posts } from '../types'
 import PostCard from './post-card'
-
-interface User {
-  user_name: string
-  name: string
-  avatar_url: string
-}
-
-interface Post {
-  id: string
-  user: User
-  content: string
-}
-
-export type Posts = Post[]
 
 interface PostsListsProps {
   posts: Posts
