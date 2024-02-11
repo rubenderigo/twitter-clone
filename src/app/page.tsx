@@ -20,6 +20,7 @@ export default async function Home() {
   const { data: posts } = await supabase
     .from('posts')
     .select('*, user:users(*)')
+    .order('created_at', { ascending: false })
 
   return (
     <main className="flex min-h-screen justify-between">
